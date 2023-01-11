@@ -1,0 +1,39 @@
+body
+{
+background-size: cover;
+}
+h1{
+    width: 100%;
+    margin: 0px;
+}
+#how
+{
+    float: right;
+    margin-right: 20px;
+}
+canvas
+{
+    align-self: center;
+    border: 5px ridge blue;
+}
+#start, #status
+{
+    margin: 10px;
+}
+#Re
+{
+    float: left;
+}
+.footer
+{
+    background-color: bisque;
+    color: rgb(176, 124, 27);
+    bottom: 0;
+    position: fixed;
+    height: 30px;
+    border-radius: 5;
+    border-color: rgb(198, 145, 80);
+    border-width: 5px;
+    width: 100%;
+    text-align: center;
+}
