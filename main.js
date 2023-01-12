@@ -27,7 +27,7 @@ function setup(){
 
   vid = createCapture(VIDEO);
   vid.hide();
-  vid.size(300, 300);
+  vid.size(700, 700);
 
   poseNet = ml5.poseNet(vid, modelLoaded);
 }
