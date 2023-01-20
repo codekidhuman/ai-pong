@@ -1,3 +1,4 @@
+game_status = "";
 
 /*created by prashant shukla */
 
@@ -51,9 +52,17 @@ function gotPoses(results)
     console.log(rwX+", "+rwY+", "+rwS);
   }
 }
-
+function startG()
+{
+  game_status = "start";
+  document.getElementById("status").innerHTML="Game Loaded"
+}
 function draw(){
+  image(vid, 0, 0, 300, 300);
 
+if(game_status=="start")
+{
+  
  background(0); 
 
  fill("black");
@@ -92,7 +101,6 @@ function draw(){
    //function move call which in very important
     move();
 
-    image(vid, 0, 0, 300, 300);
 
     if(rwS > 0.2)
     {
@@ -101,6 +109,7 @@ function draw(){
       circle(rwX, rwY, 10);
       console.log("yay")
     }
+  }
 }
 
 
@@ -199,3 +208,4 @@ function paddleInCanvas(){
     mouseY =0;
   }  
 }
+
