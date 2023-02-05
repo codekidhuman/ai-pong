@@ -17,9 +17,9 @@
     <body background="bg.jpg">
         <center>
                 <h1 class="btn btn-primary">AI Ping Pong <button id="how" data-toggle="modal" data-target="#ins" class="btn btn-info">Instructions</button></h1>
-                <button id="start" onclick="start()" class="btn btn-success">Play Game</button>
+                <button id="start" onclick="startG()" class="btn btn-success">Play Game</button>
                 <h3 id="status" class="btn btn-warning"></h3>
-                <button id="Re" class="btn btn-danger">Restart</button>
+                <button id="Re" onclick="Restart()" class="btn btn-danger">Restart</button>
                 <div class="modal fade" id="ins">
                     <div class="modal-dialogue">
                         <div class="modal-content">
@@ -28,7 +28,9 @@
                         </div>
                     </div>
                 </div>
+                <br>
                 <div id="coan"></div>
+                <div id="caon"></div>
         </center>
         <br>
         <div class="footer"><b>Designed by Steve E</b></div>
