@@ -10,6 +10,7 @@ var paddle2Y = 685,paddle2Height = 70;
 var score1 = 0, score2 =0;
 var paddle1Y;
 
+objects = "";
 rwX = 0;
 rwY = 0;
 rwS = 0;
@@ -25,7 +26,11 @@ var ball = {
     dx:3,
     dy:3
 }
-
+function preload()
+{
+  Balltou = loadSound("ball_touch_paddel.wav")
+  Misse = loadSound("missed.wav")
+}
 function setup(){
   var canvas =  createCanvas(300,300);
   canvas.parent("coan");
@@ -50,12 +55,19 @@ function gotPoses(results)
     rwY=results[0].pose.rightWrist.y;
     rwS=results[0].pose.keypoints[10].score;
     console.log(rwX+", "+rwY+", "+rwS);
+    objects=results ;
   }
 }
 function startG()
 {
   game_status = "start";
   document.getElementById("status").innerHTML="Game Loaded"
+}
+function Restart()
+{
+  pcscore = 0;
+  playerscore = 0;
+  loop()
 }
 function draw(){
   image(vid, 0, 0, 300, 300);
@@ -80,7 +92,7 @@ if(game_status=="start")
    fill(250,0,0);
     stroke(0,0,250);
     strokeWeight(0.5);
-   paddle1Y = mouseY; 
+   paddle1Y = rwY-100;
    rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
    
    
@@ -163,10 +175,12 @@ function move(){
   if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
     ball.dx = -ball.dx+0.5;
     playerscore++;
+    Balltou.play()
   }
   else{
     pcscore++;
     reset();
+    Misse.play()
     navigator.vibrate(100);
   }
 }
@@ -178,7 +192,7 @@ if(pcscore ==4){
     stroke("white");
     textSize(25)
     text("Game Over!☹☹",width/2,height/2);
-    text("Reload The Page!",width/2,height/2+30)
+    text("Press Reload To Play Again!",width/2,height/2+30)
     noLoop();
     pcscore = 0;
 }
@@ -208,4 +222,3 @@ function paddleInCanvas(){
     mouseY =0;
   }  
 }
-
